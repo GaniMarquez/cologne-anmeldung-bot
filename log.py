@@ -3,8 +3,6 @@ import logging
 
 from loguru import logger
 
-import config
-
 
 class InterceptHandler(logging.Handler):
     """
@@ -46,7 +44,7 @@ def format_record(record: dict) -> str:
     return format_string
 
 
-def setup_logging():
+def setup_logging(debug: bool, logging_level: int):
     intercept_handler = InterceptHandler()
 
     # Intercept Root Logger
@@ -56,11 +54,11 @@ def setup_logging():
     logger.configure(
         handlers=[
             {
-                "sink": sys.stderr if config.DEBUG else sys.stdout,
-                "level": config.LOGGING_LEVEL,
+                "sink": sys.stderr if debug else sys.stdout,
+                "level": logging_level,
                 "format": format_record,
-                "colorize": True if config.DEBUG else False,
-                "diagnose": True if config.DEBUG else False,
+                "colorize": True if debug else False,
+                "diagnose": True if debug else False,
             }
         ]
     )

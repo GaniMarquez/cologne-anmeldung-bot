@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "cologne-anmeldung-bot"
+name = "cologne-burgeramt-bot"
 version = "0.1.0"
-description = "A Telegram bot that checks for the earliest available schedule for Anmeldung in Cologne, Germany"
+description = "A Telegram bot that checks for the earliest available schedule in any Burgeramt in Cologne, Germany"
 authors = ["Isagani Marquez <gani.marquez.jr@gmail.com>"]
 
 [tool.poetry.dependencies]
