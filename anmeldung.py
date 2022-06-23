@@ -139,6 +139,6 @@ class AnmeldungScraper(object):
 
     def load_to_df(self, schedules: List) -> pd.DataFrame:
         df = pd.DataFrame.from_dict(schedules)
-        df["available_date"] = pd.to_datetime(df["available_date"], dayfirst=True)
+        df["available_date"] = pd.to_datetime(df["available_date"], dayfirst=True).dt.date
         df["available_time"] = pd.to_datetime(df["available_time"], format="%H:%M").dt.time
         return df.sort_values(by=["available_date", "available_time"])
