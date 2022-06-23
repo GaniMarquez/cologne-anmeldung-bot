@@ -1,49 +1,56 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Dict, List, Tuple, Union
 from urllib.parse import urlparse
 from urllib.parse import parse_qs
 
 from bs4 import BeautifulSoup
+from loguru import logger
 
 import pandas as pd
 import requests
 
 
 @dataclass
-class AnmeldungScraper(object):
-    base_url: str = "https://termine.stadt-koeln.de/m/kundenzentren/extern/calendar"
-    search_timeslots_url: str = f"{base_url}/search_result"
-    uid: str = "b5a5a394-ec33-4130-9af3-490f99517071"
+class BurgeramtScraper(object):
+    base_url: str
+    uid: str
+    search_mode: str
+    search_timeslots_url: str = field(init=False)
     lang: str = "de"
-    search_mode: str = "earliest"
 
-    def get_amneldung_landing_page(
+    def __post_init__(self):
+        self.search_timeslots_url = f"{self.base_url}/search_result"
+
+    def get_online_reservation_landing_page(
         self, params: Dict, headers: Dict
     ) -> Union[requests.Response, Dict]:
+        logger.debug("Sending request to the online reservation landing page.")
         response = requests.get(self.base_url, params=params, headers=headers, allow_redirects=True)
         query_string = self.parse_qs(response.url)
         return response, query_string
 
-    def post_anmeldung_reservation_page(
+    def post_online_reservation_page(
         self, params: Dict, data: List[Tuple], headers: Dict
     ) -> Union[requests.Response, Dict]:
+        logger.debug("Sending request to the online reservation page.")
         response = requests.post(self.base_url, params=params, headers=headers, data=data)
         query_string = self.parse_qs(response.url)
         return response, query_string
 
     def get_available_timeslots(self, params: Dict, headers: Dict) -> requests.Response:
+        logger.debug("Sending request to the fetch the available timeslots.")
         response = requests.get(self.search_timeslots_url, params=params, headers=headers)
         return response
 
     def run(self) -> pd.DataFrame:
         params = self.generate_params(uid=self.uid, lang=self.lang)
         headers = self.generate_headers()
-        response, qs = self.get_amneldung_landing_page(params, headers)
+        response, qs = self.get_online_reservation_landing_page(params, headers)
 
         params = self.generate_params(uid=self.uid, wsid=qs["wsid"][0], lang=self.lang)
         data = self.generate_form_data()
         headers = self.generate_headers(cookie=response.request.headers["Cookie"])
-        response, qs = self.post_anmeldung_reservation_page(params, data, headers)
+        response, qs = self.post_online_reservation_page(params, data, headers)
 
         params = self.generate_params(
             uid=self.uid, wsid=qs["wsid"][0], search_mode=self.search_mode
@@ -125,6 +132,7 @@ class AnmeldungScraper(object):
         return query_string
 
     def parse_html(self, response: requests.Response) -> List:
+        logger.debug("Parsing the fetched schedules from the online reservation system.")
         schedules = []
         soup = BeautifulSoup(response.text, "lxml")
         for div in soup.find_all("div", attrs={"class": "rc_appointment_possible"}):
@@ -138,7 +146,8 @@ class AnmeldungScraper(object):
         return schedules
 
     def load_to_df(self, schedules: List) -> pd.DataFrame:
+        logger.debug("Loading schdules to a dataframe for preprocessing.")
         df = pd.DataFrame.from_dict(schedules)
-        df["available_date"] = pd.to_datetime(df["available_date"], dayfirst=True)
+        df["available_date"] = pd.to_datetime(df["available_date"], dayfirst=True).dt.date
         df["available_time"] = pd.to_datetime(df["available_time"], format="%H:%M").dt.time
         return df.sort_values(by=["available_date", "available_time"])
