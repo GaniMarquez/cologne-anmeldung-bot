@@ -9,6 +9,8 @@ from loguru import logger
 import pandas as pd
 import requests
 
+from user_agent import UserAgentRotator
+
 
 @dataclass
 class BurgeramtScraper(object):
@@ -17,6 +19,7 @@ class BurgeramtScraper(object):
     search_mode: str
     search_timeslots_url: str = field(init=False)
     lang: str = "de"
+    user_agent: UserAgentRotator = UserAgentRotator()
 
     def __post_init__(self):
         self.search_timeslots_url = f"{self.base_url}/search_result"
@@ -43,19 +46,25 @@ class BurgeramtScraper(object):
         return response
 
     def run(self) -> pd.DataFrame:
+        user_agent = self.user_agent.get_user_agent()
+
         params = self.generate_params(uid=self.uid, lang=self.lang)
-        headers = self.generate_headers()
+        headers = self.generate_headers(user_agent=user_agent)
         response, qs = self.get_online_reservation_landing_page(params, headers)
 
         params = self.generate_params(uid=self.uid, wsid=qs["wsid"][0], lang=self.lang)
         data = self.generate_form_data()
-        headers = self.generate_headers(cookie=response.request.headers["Cookie"])
+        headers = self.generate_headers(
+            user_agent=user_agent, cookie=response.request.headers["Cookie"]
+        )
         response, qs = self.post_online_reservation_page(params, data, headers)
 
         params = self.generate_params(
             uid=self.uid, wsid=qs["wsid"][0], search_mode=self.search_mode
         )
-        headers = self.generate_headers(cookie=response.request.headers["Cookie"])
+        headers = self.generate_headers(
+            user_agent=user_agent, cookie=response.request.headers["Cookie"]
+        )
         response = self.get_available_timeslots(params, headers)
 
         schedules = self.parse_html(response)
@@ -63,11 +72,11 @@ class BurgeramtScraper(object):
 
         return df
 
-    def generate_headers(self, cookie: str = None) -> Dict:
+    def generate_headers(self, user_agent: str = None, cookie: str = None) -> Dict:
         headers = {
             "Accept-Language": "en",
             "Connection": "keep-alive",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36",
+            "User-Agent": user_agent,
         }
         if cookie:
             headers.update({"Cookie": cookie})
