@@ -1,7 +1,7 @@
 from scraper import BurgeramtScraper
 from bot import BurgeramtBot
 
-from log import setup_logging
+from logger import setup_logging
 
 import config
 
