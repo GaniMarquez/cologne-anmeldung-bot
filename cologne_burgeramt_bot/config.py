@@ -10,7 +10,7 @@ load_dotenv(".env")
 
 # General Configs
 HOST: str = os.getenv("HOST", "0.0.0.0")
-PORT: int = int(os.getenv("PORT", 5000))
+PORT: int = int(os.getenv("PORT", 8443))
 HEROUKU_APP: str = os.getenv("HEROKU_APP")
 DEBUG: bool = bool(strtobool(os.getenv("DEBUG", "False")))
 TELEGRAM_API_TOKEN: str = os.getenv("TELEGRAM_API_TOKEN")
