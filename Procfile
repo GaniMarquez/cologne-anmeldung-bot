@@ -1,1 +1,1 @@
-web: poetry run python run.py
+web: poetry run python cologne_burgeramt_bot/run.py
