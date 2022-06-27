@@ -18,6 +18,9 @@ from cologne_burgeramt_bot.scraper import BurgeramtScraper
 @dataclass
 class BurgeramtBot(object):
     token: str
+    host: str
+    port: int
+    heroku_app: str
     scraper: BurgeramtScraper
     updater: Updater = field(init=False)
     dispatcher: Dispatcher = field(init=False)
@@ -28,6 +31,8 @@ class BurgeramtBot(object):
         self.dispatcher.add_handler(CommandHandler("start", self.__start_callback))
         self.dispatcher.add_handler(CommandHandler("help", self.__start_callback))
         self.dispatcher.add_handler(CommandHandler("check", self.__check_callback))
+        self.updater.start_webhook(listen=self.host, port=self.port, url_path=self.token)
+        self.updater.bot.setWebhook(f"{self.heroku_app}/{self.token}")
 
     def __start_callback(self, update: Update, context: CallbackContext):
         info = {"chat_id": update.effective_chat.id}
