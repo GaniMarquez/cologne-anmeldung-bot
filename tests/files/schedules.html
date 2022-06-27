@@ -1,0 +1,336 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<title>Stadt Köln - Terminbuchung</title>
+
+		<link id="favicon" rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="/assets/images/favicon/apple-touch-icon.png" />
+		<link rel="shortcut icon" href="/assets/images/favicon/android-icon.png" sizes="196x196">
+		<meta name="msapplication-square70x70logo" content="/assets/images/favicon/msapplication-square70x70logo.png" />
+		<meta name="msapplication-square150x150logo" content="/assets/images/favicon/msapplication-square150x150logo.png" />
+		<meta name="msapplication-wide310x150logo" content="/assets/images/favicon/msapplication-wide310x150logo.png" />
+		<meta name="msapplication-square310x310logo" content="/assets/images/favicon/msapplication-square310x310logo.png" />
+
+		<link href="/m/kundenzentren/extern/libs/font-lato-1.0.0/font-lato.css" rel="stylesheet" />
+
+		<script src="/m/kundenzentren/extern/libs/jquery-3.3.1/jquery.min.js"></script>
+
+		<script src="/m/kundenzentren/extern/assets/js/rc.core.js?rev=20220625T230003"></script>
+		<script src="/m/kundenzentren/extern/assets/js/rc.logging.js?rev=20220625T230003"></script>
+		<script src="/m/kundenzentren/extern/assets/js/rc.page.js?rev=20220625T230003"></script>
+
+		<script>
+			$(function () {
+				rc.page.init({
+					"tenant_fullurl": "https://termine.stadt-koeln.de/m/Kundenzentren",
+					"baseurl": "/m/kundenzentren",
+					"language_ui": "de",
+					"version": "1.6.08.000"
+				});
+			});
+		</script>
+
+		<link href="/m/kundenzentren/extern/assets/css/tenant_custom.css?rev=20220625T230003" rel="stylesheet" />
+		<style>
+			
+
+		</style>
+
+		<style>/* Termintemplate - Leistungen -  Abstand */
+.rc_appointment_wizard_bitv .service_container {
+    padding: 1em;
+}
+/* Termintemplate - Leistungen - graues Raster */
+.rc_appointment_wizard_bitv .service_container:nth-child(2n+0), .rc_appointment_wizard_bitv .service_container:nth-child(2n+0) a {
+    background-color: #EBEBEB;
+}
+
+/* Terminbuchung - Aktionsbutton - Hintergrund */
+.actions.right {
+  text-align: left;
+}
+
+/* Terminbuchung - Aktionsbutton - zurück */
+.actions.right .button {
+  margin-right: 0.5em;
+  margin-left: 0;
+}
+
+/* Terminbuchung - Aktionsbutton - weiter */
+.actions button {
+ background-color: #A4A4A4;
+}
+</style>
+
+	</head>
+	<body class=" rc_appointment_wizard rc_appointment_wizard_bitv ">
+		<div class="rc_page">
+
+<div>
+
+	<!-- APPOINTMENT LIST -->
+	<div>
+		
+
+<div id="json_appointment_list">
+	
+		{"appointments":[
+		
+		
+		{
+			"datetime_iso86001": "2022-06-27T10:10:00.0000000+02:00",
+			"date": "22-6-27",
+			"date_time": "27.06.2022 10:10",
+			"unit": "Temporäre Ausweis- und Meldestelle Kalk",
+			"unit_uid": "dae8f2d2-f54a-4313-bd37-136c6836cb14",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-06-27T10%3a10%3a00%2b02%3a00&appointment_duration=10&location=dae8f2d2-f54a-4313-bd37-136c6836cb14"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-06-28T15:10:00.0000000+02:00",
+			"date": "22-6-28",
+			"date_time": "28.06.2022 15:10",
+			"unit": "Kundenzentrum Rodenkirchen",
+			"unit_uid": "b3e10f8d-3c54-44d5-b06e-21b8699ea52b",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-06-28T15%3a10%3a00%2b02%3a00&appointment_duration=10&location=b3e10f8d-3c54-44d5-b06e-21b8699ea52b"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-19T10:10:00.0000000+02:00",
+			"date": "22-8-19",
+			"date_time": "19.08.2022 10:10",
+			"unit": "Kundenzentrum Kalk",
+			"unit_uid": "12889773-9d8b-4be5-997d-931def4e0319",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-19T10%3a10%3a00%2b02%3a00&appointment_duration=10&location=12889773-9d8b-4be5-997d-931def4e0319"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-23T09:40:00.0000000+02:00",
+			"date": "22-8-23",
+			"date_time": "23.08.2022 09:40",
+			"unit": "Kundenzentrum Chorweiler",
+			"unit_uid": "3557740d-2fb2-4e56-b93b-47023d416c97",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-23T09%3a40%3a00%2b02%3a00&appointment_duration=10&location=3557740d-2fb2-4e56-b93b-47023d416c97"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-23T11:40:00.0000000+02:00",
+			"date": "22-8-23",
+			"date_time": "23.08.2022 11:40",
+			"unit": "Kundenzentrum Innenstadt",
+			"unit_uid": "adef3f58-20bc-465d-9879-608ac5894295",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-23T11%3a40%3a00%2b02%3a00&appointment_duration=10&location=adef3f58-20bc-465d-9879-608ac5894295"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-25T07:30:00.0000000+02:00",
+			"date": "22-8-25",
+			"date_time": "25.08.2022 07:30",
+			"unit": "Kundenzentrum Mülheim",
+			"unit_uid": "393a5db2-d4c3-4e22-9065-df9b453ba46a",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T07%3a30%3a00%2b02%3a00&appointment_duration=10&location=393a5db2-d4c3-4e22-9065-df9b453ba46a"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-25T07:50:00.0000000+02:00",
+			"date": "22-8-25",
+			"date_time": "25.08.2022 07:50",
+			"unit": "Kundenzentrum Nippes",
+			"unit_uid": "94494140-f83a-46c8-ab29-26589a9f597c",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T07%3a50%3a00%2b02%3a00&appointment_duration=10&location=94494140-f83a-46c8-ab29-26589a9f597c"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-25T08:10:00.0000000+02:00",
+			"date": "22-8-25",
+			"date_time": "25.08.2022 08:10",
+			"unit": "Kundenzentrum Ehrenfeld",
+			"unit_uid": "119cd015-75ca-4c77-a3f9-b2e183ce0ccd",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T08%3a10%3a00%2b02%3a00&appointment_duration=10&location=119cd015-75ca-4c77-a3f9-b2e183ce0ccd"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-25T11:10:00.0000000+02:00",
+			"date": "22-8-25",
+			"date_time": "25.08.2022 11:10",
+			"unit": "Kundenzentrum Porz",
+			"unit_uid": "853106c1-0bf8-4e08-b308-eaae6f669a9f",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T11%3a10%3a00%2b02%3a00&appointment_duration=10&location=853106c1-0bf8-4e08-b308-eaae6f669a9f"
+		}
+		
+		,
+		{
+			"datetime_iso86001": "2022-08-25T12:10:00.0000000+02:00",
+			"date": "22-8-25",
+			"date_time": "25.08.2022 12:10",
+			"unit": "Kundenzentrum Lindenthal",
+			"unit_uid": "d34bc259-3430-4ebe-8293-f488376bc5f1",
+			"duration": "10",
+			"link": "/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T12%3a10%3a00%2b02%3a00&appointment_duration=10&location=d34bc259-3430-4ebe-8293-f488376bc5f1"
+		}
+		
+		]}
+	
+</div>
+		<div>
+		
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>27.06.2022 10:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Temporäre Ausweis- und Meldestelle Kalk</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-06-27T10%3a10%3a00%2b02%3a00&appointment_duration=10&location=dae8f2d2-f54a-4313-bd37-136c6836cb14&resources=7bd69e08-bce5-4f6e-893a-609426318206">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>28.06.2022 15:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Rodenkirchen</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-06-28T15%3a10%3a00%2b02%3a00&appointment_duration=10&location=b3e10f8d-3c54-44d5-b06e-21b8699ea52b&resources=c31488cc-d904-4cb7-9d22-f3688e036e22">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>19.08.2022 10:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Kalk</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-19T10%3a10%3a00%2b02%3a00&appointment_duration=10&location=12889773-9d8b-4be5-997d-931def4e0319&resources=108b8ecf-030a-4a1c-b411-3fc2db7cdc9e">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>23.08.2022 09:40</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Chorweiler</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-23T09%3a40%3a00%2b02%3a00&appointment_duration=10&location=3557740d-2fb2-4e56-b93b-47023d416c97&resources=a6d6e001-e2d6-4f0e-98e3-db56eacef49e">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>23.08.2022 11:40</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Innenstadt</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-23T11%3a40%3a00%2b02%3a00&appointment_duration=10&location=adef3f58-20bc-465d-9879-608ac5894295&resources=e842987e-88e3-4243-866e-0fd1469c03d3">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>25.08.2022 07:30</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Mülheim</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T07%3a30%3a00%2b02%3a00&appointment_duration=10&location=393a5db2-d4c3-4e22-9065-df9b453ba46a&resources=7c48e4cb-87da-415e-bc82-510c4b3f031a">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>25.08.2022 07:50</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Nippes</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T07%3a50%3a00%2b02%3a00&appointment_duration=10&location=94494140-f83a-46c8-ab29-26589a9f597c&resources=891af9dd-cecb-4e24-a4e9-a7a936691002">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>25.08.2022 08:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Ehrenfeld</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T08%3a10%3a00%2b02%3a00&appointment_duration=10&location=119cd015-75ca-4c77-a3f9-b2e183ce0ccd&resources=e889dfd3-8f3b-4f93-a9d2-666a77d3713e">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>25.08.2022 11:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Porz</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T11%3a10%3a00%2b02%3a00&appointment_duration=10&location=853106c1-0bf8-4e08-b308-eaae6f669a9f&resources=1e2f1b59-b52b-4884-bebb-bdaf0cdaf240">Termin buchen</a>
+				</div>
+			</div>
+			
+
+			<div class="rc_appointment_possible">
+				<div>
+					<div style="font-size: 1.5em;"><i class="grey calendar icon"></i>25.08.2022 12:10</div>
+					<div><i class="grey map marker icon"></i>Standort: Kundenzentrum Lindenthal</div>
+					<div><i class="grey clock icon"></i>Dauer: 10 Minuten</div>
+				</div>
+				<div>
+					<a class="ui primary button" href="/m/kundenzentren/extern/calendar/booking?uid=b5a5a394-ec33-4130-9af3-490f99517071&wsid=b0a7e668-6a8b-4cf8-acdb-705fdb5d3b31&lang=de&appointment_datetime=2022-08-25T12%3a10%3a00%2b02%3a00&appointment_duration=10&location=d34bc259-3430-4ebe-8293-f488376bc5f1&resources=0390792a-87cc-42b1-94c3-e7b38d4c86ac">Termin buchen</a>
+				</div>
+			</div>
+			
+			
+		
+		</div>
+	</div>
+	<!-- END APPOINTMENT LIST -->
+
+</div>
+
+
+
+		
+
+		</div>
+	</body>
+</html> <!-- time: 1688 ms, 16887112 ticks -->

@@ -1,9 +1,7 @@
-from scraper import BurgeramtScraper
-from bot import BurgeramtBot
-
-from logger import setup_logging
-
-import config
+from cologne_burgeramt_bot.scraper import BurgeramtScraper
+from cologne_burgeramt_bot.bot import BurgeramtBot
+from cologne_burgeramt_bot.logger import setup_logging
+from cologne_burgeramt_bot import config
 
 
 def main():

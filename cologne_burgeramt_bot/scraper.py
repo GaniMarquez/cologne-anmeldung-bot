@@ -9,7 +9,7 @@ from loguru import logger
 import pandas as pd
 import requests
 
-from user_agent import UserAgentRotator
+from cologne_burgeramt_bot.user_agent import UserAgentRotator
 
 
 @dataclass

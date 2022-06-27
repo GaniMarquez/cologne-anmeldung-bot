@@ -12,7 +12,7 @@ from loguru import logger
 
 import telegram
 
-from scraper import BurgeramtScraper
+from cologne_burgeramt_bot.scraper import BurgeramtScraper
 
 
 @dataclass
