@@ -18,11 +18,56 @@ python-dotenv = "^0.20.0"
 black = "^22.3.0"
 flake8 = "^4.0.1"
 pytest = "^7.1.2"
+pytest-cov = "^3.0.0"
+pytest-mock = "^3.8.1"
 
 [tool.black]
 line-length = 100
 target-version = ['py39']
 include = '\.pyi?$'
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = [
+    "-ra",
+    "-vvvv",
+    "--show-capture=all",
+    "--cov=./",
+    "--cov-report=html",
+    "--cov-report=xml",
+    # "--capture=no" # uncomment to show application logs
+]
+testpaths = ["tests"]
+filterwarnings = [
+    "ignore::pytest.PytestCollectionWarning"
+]
+
+[tool.coverage.run]
+concurrency = ["multiprocessing"]
+disable_warnings = ["no-data-collected"]
+omit = [
+    "*/site-packages/*",
+    "*/distutils/*",
+    "*/__init__.py",
+    "tests/*",
+    "*/logger.py",
+    "*/bot.py",
+    "*/run.py"
+]
+
+[tool.coverage.report]
+omit = [
+    "*/site-packages/*",
+    "*/distutils/*",
+    "*/__init__.py",
+    "tests/*",
+    "*/logger.py",
+    "*/bot.py",
+    "*/run.py"
+]
+
+[tool.coverage.html]
+directory = "tests/htmlcov"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
