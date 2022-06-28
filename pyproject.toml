@@ -34,7 +34,6 @@ addopts = [
     "--show-capture=all",
     "--cov=./",
     "--cov-report=html",
-    "--cov-report=xml",
     # "--capture=no" # uncomment to show application logs
 ]
 testpaths = ["tests"]
