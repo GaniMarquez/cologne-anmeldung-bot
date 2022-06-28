@@ -18,7 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ["3.9"]
+        python-version: ["3.9.12"]
         poetry-version: ["1.1.12"]
         os: [ubuntu-18.04]
     runs-on: ${{ matrix.os }}
@@ -32,7 +32,9 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Show PWD
-        run: echo $PWD
+        run: |
+          echo $PWD
+          ls
       - name: Install Dependencies
         run: poetry install
       - name: Run Tests
