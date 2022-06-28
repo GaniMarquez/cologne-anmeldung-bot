@@ -11,7 +11,13 @@ def main():
         uid=config.SCRAPER_UID,
         search_mode=config.SCRAPER_SEARCH_MODE,
     )
-    bot = BurgeramtBot(token=config.TELEGRAM_API_TOKEN, scraper=scraper)
+    bot = BurgeramtBot(
+        token=config.TELEGRAM_API_TOKEN,
+        host=config.HOST,
+        port=config.PORT,
+        heroku_app=config.HEROUKU_APP,
+        scraper=scraper,
+    )
     bot.run()
 
 
