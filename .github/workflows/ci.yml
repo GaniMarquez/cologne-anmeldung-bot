@@ -12,6 +12,11 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      environment:
+        type: environment
+        default: DEV
+        required: true
 
 jobs:
   ci:
